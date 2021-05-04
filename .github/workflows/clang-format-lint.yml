@@ -7,17 +7,12 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
-    - uses: DoozyX/clang-format-lint-action@v0.12
-      with:
-        source: '.'
-        extensions: 'h,cpp'
-        clangFormatVersion: 12
-        inplace: True
-    - uses: EndBug/add-and-commit@v4
-      with:
-        author_name: Ronald-batista
-        author_email: ronald_hobo@outlook.com.br
-        message: 'clang format lint action'
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+ 
+     # Optionally generate compile_commands.json
+# https://github.com/marketplace/actions/clang-tidy-review
+    - uses: ZedThree/clang-tidy-review@v0.6.0
+      id: review
+    # If there are any comments, fail the check
+    - if: steps.review.outputs.total_comments > 0
+      run: exit 1
+      
