@@ -131,3 +131,10 @@ void showArray(record_type vector[]) {
 /home/runner/work/testes/testes/2heapsort.cpp:110:19: warning: do not implicitly decay an array into a pointer; consider using gsl::array_view or an explicit cast instead [hicpp-no-array-decay]
   cout << ", " << vector.string << " ]" << endl;
                   ^
+/home/runner/work/testes/testes/teste-adress-sanitizer.c:6:14: warning: 6 is a magic number; consider replacing it with a named constant [readability-magic-numbers]
+    char msg[6];
+             ^
+/home/runner/work/testes/testes/teste-adress-sanitizer.c:8:5: warning: Call to function 'strcpy' is insecure as it does not provide bounding of the memory buffer. Replace unbounded copy functions with analogous functions that support length arguments such as 'strlcpy'. CWE-119 [clang-analyzer-security.insecureAPI.strcpy]
+    strcpy(msg, "Hello!");
+    ^
+/home/runner/work/testes/testes/teste-adress-sanitizer.c:8:5: note: Call to function 'strcpy' is insecure as it does not provide bounding of the memory buffer. Replace unbounded copy functions with analogous functions that support length arguments such as 'strlcpy'. CWE-119
