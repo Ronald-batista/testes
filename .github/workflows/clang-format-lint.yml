@@ -10,7 +10,7 @@ jobs:
  
     - uses: actions/checkout@v2
     
-    - name: c-linter
-      uses: ArtificialAmateur/cpp-linter-action@master
+    - name: clang-tidy check
+      uses: smay1613/clang-tidy-action@master
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
