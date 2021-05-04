@@ -10,12 +10,14 @@ jobs:
  
     - uses: actions/checkout@v2
     
-    - uses: DoozyX/clang-format-lint-action@v0.12
-      with:
-        source: '.'
-        extensions: 'h,cpp'
-        clangFormatVersion: 12
-        style: chromium
+    - name: Install clang tidy
+      run: | 
+        sudo apt-get update -y
+        sudo apt-get install -y clang-tidy
+        
+    - name: running clang tidy # with checks readability, mordenize, hipperformace, performance
+      run: clang-tidy --checks="read*,modern*,hicpp*,performance*" *.cpp >> report_code_quality.txt
+      
 
     # Melhor action de commit    
     - name: publish report    
