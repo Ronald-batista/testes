@@ -1,0 +1,133 @@
+/home/runner/work/testes/testes/2heapsort.cpp:3:10: warning: inclusion of deprecated C++ header 'stdlib.h'; consider using 'cstdlib' instead [hicpp-deprecated-headers]
+#include <stdlib.h>
+         ^
+note: this fix will not be applied because it overlaps with another fix
+/home/runner/work/testes/testes/2heapsort.cpp:3:10: warning: inclusion of deprecated C++ header 'stdlib.h'; consider using 'cstdlib' instead [modernize-deprecated-headers]
+note: this fix will not be applied because it overlaps with another fix
+/home/runner/work/testes/testes/2heapsort.cpp:10:3: warning: do not declare C-style arrays, use std::array<> instead [hicpp-avoid-c-arrays]
+  char string[];
+  ^
+/home/runner/work/testes/testes/2heapsort.cpp:10:3: warning: do not declare C-style arrays, use std::array<> instead [modernize-avoid-c-arrays]
+/home/runner/work/testes/testes/2heapsort.cpp:13:24: warning: do not declare C-style arrays, use std::array<> instead [hicpp-avoid-c-arrays]
+void fill_registration(record_type vector[]);
+                       ^
+/home/runner/work/testes/testes/2heapsort.cpp:13:24: warning: do not declare C-style arrays, use std::array<> instead [modernize-avoid-c-arrays]
+/home/runner/work/testes/testes/2heapsort.cpp:14:16: warning: do not declare C-style arrays, use std::array<> instead [hicpp-avoid-c-arrays]
+void showArray(record_type vector[]);
+               ^
+/home/runner/work/testes/testes/2heapsort.cpp:14:16: warning: do not declare C-style arrays, use std::array<> instead [modernize-avoid-c-arrays]
+/home/runner/work/testes/testes/2heapsort.cpp:16:6: warning: function 'heapsort' has a definition with different parameter names [readability-inconsistent-declaration-parameter-name]
+void heapsort(record_type v[], int n);
+     ^
+/home/runner/work/testes/testes/2heapsort.cpp:64:6: note: the definition seen here
+void heapsort(record_type r[], int n) {
+     ^
+/home/runner/work/testes/testes/2heapsort.cpp:16:6: note: differing parameters are named here: ('v'), in definition: ('r')
+void heapsort(record_type v[], int n);
+     ^                    ~
+                          r
+/home/runner/work/testes/testes/2heapsort.cpp:16:15: warning: do not declare C-style arrays, use std::array<> instead [hicpp-avoid-c-arrays]
+void heapsort(record_type v[], int n);
+              ^
+/home/runner/work/testes/testes/2heapsort.cpp:16:15: warning: do not declare C-style arrays, use std::array<> instead [modernize-avoid-c-arrays]
+/home/runner/work/testes/testes/2heapsort.cpp:17:6: warning: function 'build_max_heap' has a definition with different parameter names [readability-inconsistent-declaration-parameter-name]
+void build_max_heap(record_type v[], int n);
+     ^
+/home/runner/work/testes/testes/2heapsort.cpp:56:6: note: the definition seen here
+void build_max_heap(record_type r[], int n) {
+     ^
+/home/runner/work/testes/testes/2heapsort.cpp:17:6: note: differing parameters are named here: ('v'), in definition: ('r')
+void build_max_heap(record_type v[], int n);
+     ^                          ~
+                                r
+/home/runner/work/testes/testes/2heapsort.cpp:17:21: warning: do not declare C-style arrays, use std::array<> instead [hicpp-avoid-c-arrays]
+void build_max_heap(record_type v[], int n);
+                    ^
+/home/runner/work/testes/testes/2heapsort.cpp:17:21: warning: do not declare C-style arrays, use std::array<> instead [modernize-avoid-c-arrays]
+/home/runner/work/testes/testes/2heapsort.cpp:18:6: warning: function 'max_heapfy' has a definition with different parameter names [readability-inconsistent-declaration-parameter-name]
+void max_heapfy(record_type v[], int i, int n);
+     ^
+/home/runner/work/testes/testes/2heapsort.cpp:36:6: note: the definition seen here
+void max_heapfy(record_type r[], int i, int n) {
+     ^
+/home/runner/work/testes/testes/2heapsort.cpp:18:6: note: differing parameters are named here: ('v'), in definition: ('r')
+void max_heapfy(record_type v[], int i, int n);
+     ^                      ~
+                            r
+/home/runner/work/testes/testes/2heapsort.cpp:18:17: warning: do not declare C-style arrays, use std::array<> instead [hicpp-avoid-c-arrays]
+void max_heapfy(record_type v[], int i, int n);
+                ^
+/home/runner/work/testes/testes/2heapsort.cpp:18:17: warning: do not declare C-style arrays, use std::array<> instead [modernize-avoid-c-arrays]
+/home/runner/work/testes/testes/2heapsort.cpp:19:6: warning: function 'swap' has a definition with different parameter names [readability-inconsistent-declaration-parameter-name]
+void swap(record_type v[], int a, int b);
+     ^
+/home/runner/work/testes/testes/2heapsort.cpp:76:6: note: the definition seen here
+void swap(record_type r[], int a, int b) {
+     ^
+/home/runner/work/testes/testes/2heapsort.cpp:19:6: note: differing parameters are named here: ('v'), in definition: ('r')
+void swap(record_type v[], int a, int b);
+     ^                ~
+                      r
+/home/runner/work/testes/testes/2heapsort.cpp:19:11: warning: do not declare C-style arrays, use std::array<> instead [hicpp-avoid-c-arrays]
+void swap(record_type v[], int a, int b);
+          ^
+/home/runner/work/testes/testes/2heapsort.cpp:19:11: warning: do not declare C-style arrays, use std::array<> instead [modernize-avoid-c-arrays]
+/home/runner/work/testes/testes/2heapsort.cpp:22:5: warning: use a trailing return type for this function [modernize-use-trailing-return-type]
+int main(int argc, char **argv) {
+~~~ ^
+auto                            -> int
+/home/runner/work/testes/testes/2heapsort.cpp:24:29: warning: do not manage memory manually; consider a container or a smart pointer [hicpp-no-malloc]
+  registry = (record_type *)calloc(SIZE, sizeof(record_type));
+                            ^
+/home/runner/work/testes/testes/2heapsort.cpp:31:3: warning: do not manage memory manually; use RAII [hicpp-no-malloc]
+  free(registry);      // Clear allocated memory
+  ^
+/home/runner/work/testes/testes/2heapsort.cpp:36:17: warning: do not declare C-style arrays, use std::array<> instead [hicpp-avoid-c-arrays]
+void max_heapfy(record_type r[], int i, int n) {
+                ^
+/home/runner/work/testes/testes/2heapsort.cpp:36:17: warning: do not declare C-style arrays, use std::array<> instead [modernize-avoid-c-arrays]
+/home/runner/work/testes/testes/2heapsort.cpp:46:50: warning: statement should be inside braces [hicpp-braces-around-statements]
+  if (right <= n && r[right].num > r[larger].num)
+                                                 ^
+                                                  {
+/home/runner/work/testes/testes/2heapsort.cpp:46:50: warning: statement should be inside braces [readability-braces-around-statements]
+  if (right <= n && r[right].num > r[larger].num)
+                                                 ^
+                                                  {
+/home/runner/work/testes/testes/2heapsort.cpp:56:21: warning: do not declare C-style arrays, use std::array<> instead [hicpp-avoid-c-arrays]
+void build_max_heap(record_type r[], int n) {
+                    ^
+/home/runner/work/testes/testes/2heapsort.cpp:56:21: warning: do not declare C-style arrays, use std::array<> instead [modernize-avoid-c-arrays]
+/home/runner/work/testes/testes/2heapsort.cpp:58:31: warning: statement should be inside braces [hicpp-braces-around-statements]
+  for (i = n / 2; i >= 0; i--)
+                              ^
+                               {
+/home/runner/work/testes/testes/2heapsort.cpp:58:31: warning: statement should be inside braces [readability-braces-around-statements]
+  for (i = n / 2; i >= 0; i--)
+                              ^
+                               {
+/home/runner/work/testes/testes/2heapsort.cpp:64:15: warning: do not declare C-style arrays, use std::array<> instead [hicpp-avoid-c-arrays]
+void heapsort(record_type r[], int n) {
+              ^
+/home/runner/work/testes/testes/2heapsort.cpp:64:15: warning: do not declare C-style arrays, use std::array<> instead [modernize-avoid-c-arrays]
+/home/runner/work/testes/testes/2heapsort.cpp:76:11: warning: do not declare C-style arrays, use std::array<> instead [hicpp-avoid-c-arrays]
+void swap(record_type r[], int a, int b) {
+          ^
+/home/runner/work/testes/testes/2heapsort.cpp:76:11: warning: do not declare C-style arrays, use std::array<> instead [modernize-avoid-c-arrays]
+/home/runner/work/testes/testes/2heapsort.cpp:84:24: warning: do not declare C-style arrays, use std::array<> instead [hicpp-avoid-c-arrays]
+void fill_registration(record_type r[]) {
+                       ^
+/home/runner/work/testes/testes/2heapsort.cpp:84:24: warning: do not declare C-style arrays, use std::array<> instead [modernize-avoid-c-arrays]
+/home/runner/work/testes/testes/2heapsort.cpp:88:44: warning: 2147483648 is a magic number; consider replacing it with a named constant [readability-magic-numbers]
+  std::uniform_int_distribution<int> dist{-2147483648,
+                                           ^
+/home/runner/work/testes/testes/2heapsort.cpp:89:43: warning: 2147483647 is a magic number; consider replacing it with a named constant [readability-magic-numbers]
+                                          2147483647}; // range data type int
+                                          ^
+/home/runner/work/testes/testes/2heapsort.cpp:98:16: warning: do not declare C-style arrays, use std::array<> instead [hicpp-avoid-c-arrays]
+void showArray(record_type vector[]) {
+               ^
+/home/runner/work/testes/testes/2heapsort.cpp:98:16: warning: do not declare C-style arrays, use std::array<> instead [modernize-avoid-c-arrays]
+/home/runner/work/testes/testes/2heapsort.cpp:110:19: warning: do not implicitly decay an array into a pointer; consider using gsl::array_view or an explicit cast instead [hicpp-no-array-decay]
+  cout << ", " << vector.string << " ]" << endl;
+                  ^
