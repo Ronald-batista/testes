@@ -18,7 +18,9 @@ jobs:
     - name: running clang tidy # with checks readability, mordenize, hipperformace, performance
       run: |
         clang-tidy --fix  --checks="read*,modern*,hicpp*,performance*" *.cpp > report_code_quality.txt
-        echo $? > $env:CLANG_TIDY
+        echo $? > CLANG-TIDY.txt
+      env:
+        CLANG_TIDY: ${cat CLANG-TIDY.txt}
         
     - name: TESTANDO IF E VARIAVEL DE AMBIENTE
       if: ${{env.CLANG_TIDY}} == 0 
