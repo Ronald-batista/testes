@@ -21,7 +21,7 @@ jobs:
         echo $? > $env:CLANG_TIDY
         
     - name: TESTANDO IF E VARIAVEL DE AMBIENTE
-      if: ${{env.CLANG_TIDY}} == 33 
+      if: ${{env.CLANG_TIDY}} == 0 
       run: echo "O IF FUNCIOU AEEEOOWW"
       
           # Melhor action de commit    
