@@ -1,6 +1,13 @@
-#include <stdlib.h>
-
-int main () {
-    int x= 1;
-    printf("%d", x);
+#include <stdio.h>
+#include <string.h>
+ 
+int main(int argc, const char *argv[])
+{
+    char msg[6];
+ 
+    strcpy(msg, "Hello!");
+ 
+    printf("%s\n", msg);
+ 
+    return 0;
 }
