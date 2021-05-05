@@ -1,4 +1,4 @@
-name: Run clang-format Linter
+name: Testing Code
 
 on: [push]
 
@@ -14,12 +14,10 @@ jobs:
           ./teste
   
 
-  Create_report:
+  Create_report_code_quality:
     runs-on: ubuntu-latest
-    
     steps:
     - uses: actions/checkout@v2
-    
     - name: Install clang tidy
       run: | 
         sudo apt-get update -y
@@ -35,13 +33,10 @@ jobs:
         path: ./report_code_quality.txt
 
 
-  testing_code_quality:
+  Testing_code_quality:
     runs-on: ubuntu-latest
-
     steps:
- 
     - uses: actions/checkout@v2
-    
     - name: Install clang tidy
       run: | 
         sudo apt-get update -y
