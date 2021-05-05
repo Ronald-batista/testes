@@ -22,7 +22,7 @@ jobs:
     - uses: actions/upload-artifact@v2
       with:
         name: report_code_quality
-        path: /report_code_quality.txt
+        path: ./report_code_quality.txt
 
 
   Treat_Warning_as_errors:
