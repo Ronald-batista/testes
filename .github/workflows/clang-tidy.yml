@@ -16,12 +16,19 @@ jobs:
         sudo apt-get install -y clang-tidy
         
     - name: running clang tidy # with checks readability, mordenize, hipperformace, performance
-      run: clang-tidy --checks="read*,modern*,hicpp*,performance*" *.c >> report_code_quality.txt
-      
+      run: |
+        clang-tidy --fix --warnings-as-errors="*" --checks="read*,modern*,hicpp*,performance*" *.cpp > report_code_quality.txt
+        echo $? > clang-tidy.txt
+      env:
+        CLANG_TIDY: ${{ cat clang-tidy.txt }}
+        
+    - name: TESTANDO IF E VARIAVEL DE AMBIENTE
+      if: $CLANG_TIDY != 0 
+      run: echo "O IF FUNCIOU AEEEOOWW"
 
     # Melhor action de commit    
-    - name: publish report    
-      uses: mikeal/publish-to-github-action@master
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        BRANCH_NAME: 'main' # your branch name goes here
+    #- name: publish report    
+     # uses: mikeal/publish-to-github-action@master
+     # env:
+       # GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+       # BRANCH_NAME: 'main' # your branch name goes here
