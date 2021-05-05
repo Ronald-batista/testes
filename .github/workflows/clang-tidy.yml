@@ -4,6 +4,15 @@ on: [push]
 
 jobs:
 
+  Testing Address Sanitizer:  
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Compiling with Address Sanitizer
+        run: clang++ -fsanitize=address -g 2heapsort.cpp -o 2heapsort
+        
+  
+
   Create_report:
     runs-on: ubuntu-latest
     
@@ -25,7 +34,7 @@ jobs:
         path: ./report_code_quality.txt
 
 
-  Treat_Warning_as_errors:
+  testing code quality:
     runs-on: ubuntu-latest
 
     steps:
@@ -39,6 +48,7 @@ jobs:
         
     - name: running clang tidy # with checks readability, mordenize, hipperformace, performance
       run: |
-        clang-tidy --fix --warnings-as-errors="*" --checks="read*,modern*,hicpp*,performance*" *.cpp > report_code_quality.txt
-        echo $? > $env:CLANG_TIDY
+        clang-tidy --fix --warnings-as-errors="*" --checks="read*,modern*,hicpp*,performance*" *.cpp
+
+        
         
