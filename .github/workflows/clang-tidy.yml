@@ -23,7 +23,7 @@ jobs:
         CLANG_TIDY: ${cat CLANG-TIDY.txt}
         
     - name: TESTANDO IF E VARIAVEL DE AMBIENTE
-      if: ${{CLANG_TIDY}} == 0 
+      if: $CLANG_TIDY == 0 
       run: echo "O IF FUNCIOU AEEEOOWW"
       
           # Melhor action de commit    
