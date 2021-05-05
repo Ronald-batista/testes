@@ -3,7 +3,36 @@ name: Run clang-format Linter
 on: [push]
 
 jobs:
-  build:
+
+  Create_report:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v2
+    
+    - name: Install clang tidy
+      run: | 
+        sudo apt-get update -y
+        sudo apt-get install -y clang-tidy
+        
+    - name: running clang tidy # with checks readability, mordenize, hipperformace, performance
+      run: |
+        clang-tidy --fix  --checks="read*,modern*,hicpp*,performance*" *.cpp > report_code_quality.txt
+        echo $? > $env:CLANG_TIDY
+        
+    - name: TESTANDO IF E VARIAVEL DE AMBIENTE
+      if: ${{env.CLANG_TIDY}} == 33 
+      run: echo "O IF FUNCIOU AEEEOOWW"
+      
+          # Melhor action de commit    
+    - name: publish report    
+      uses: mikeal/publish-to-github-action@master
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        BRANCH_NAME: 'main' # your branch name goes here
+
+
+  Treat_Warning_as_errors:
     runs-on: ubuntu-latest
 
     steps:
@@ -20,13 +49,3 @@ jobs:
         clang-tidy --fix --warnings-as-errors="*" --checks="read*,modern*,hicpp*,performance*" *.cpp > report_code_quality.txt
         echo $? > $env:CLANG_TIDY
         
-    - name: TESTANDO IF E VARIAVEL DE AMBIENTE
-      if: ${{env.CLANG_TIDY}} == 33 
-      run: echo "O IF FUNCIOU AEEEOOWW"
-
-    # Melhor action de commit    
-    #- name: publish report    
-     # uses: mikeal/publish-to-github-action@master
-     # env:
-       # GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-       # BRANCH_NAME: 'main' # your branch name goes here
