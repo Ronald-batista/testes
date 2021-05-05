@@ -9,8 +9,9 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Compiling with Address Sanitizer
-        run: clang++ -fsanitize=address -g teste.c -o teste
-        
+        run: |
+          clang -fsanitize=address -g teste.c -o teste
+          ./teste
   
 
   Create_report:
