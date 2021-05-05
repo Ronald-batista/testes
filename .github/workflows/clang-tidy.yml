@@ -9,7 +9,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Compiling with Address Sanitizer
-        run: clang++ -fsanitize=address -g 2heapsort.cpp -o 2heapsort
+        run: clang++ -fsanitize=address -g teste.c -o teste
         
   
 
@@ -26,7 +26,7 @@ jobs:
         
     - name: running clang tidy # with checks readability, mordenize, hipperformace, performance
       run: |
-        clang-tidy --fix  --checks="read*,modern*,hicpp*,performance*" *.cpp > report_code_quality.txt
+        clang-tidy --fix  --checks="read*,modern*,hicpp*,performance*" *.c > report_code_quality.txt
       
     - uses: actions/upload-artifact@v2
       with:
@@ -48,7 +48,7 @@ jobs:
         
     - name: running clang tidy # with checks readability, mordenize, hipperformace, performance
       run: |
-        clang-tidy --fix --warnings-as-errors="*" --checks="read*,modern*,hicpp*,performance*" *.cpp
+        clang-tidy --fix --warnings-as-errors="*" --checks="read*,modern*,hicpp*,performance*" *.c
 
         
         
