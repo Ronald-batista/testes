@@ -34,7 +34,7 @@ jobs:
         path: ./report_code_quality.txt
 
 
-  testing code quality:
+  testing_code_quality:
     runs-on: ubuntu-latest
 
     steps:
