@@ -18,20 +18,11 @@ jobs:
     - name: running clang tidy # with checks readability, mordenize, hipperformace, performance
       run: |
         clang-tidy --fix  --checks="read*,modern*,hicpp*,performance*" *.cpp > report_code_quality.txt
-        #echo $? > CLANG-TIDY.txt
-      env:
-        CLANG_TIDY: ${echo $?}
-        
-    - name: TESTANDO IF E VARIAVEL DE AMBIENTE
-      if: ${{ env.CLANG_TIDY }} == 0 
-      run: echo ${{ env.CLANG_TIDY }}
       
-          # Melhor action de commit    
-    - name: publish report    
-      uses: mikeal/publish-to-github-action@master
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        BRANCH_NAME: 'main' # your branch name goes here
+    - uses: actions/upload-artifact@v2
+      with:
+        name: report_code_quality
+        path: /report_code_quality.txt
 
 
   Treat_Warning_as_errors:
