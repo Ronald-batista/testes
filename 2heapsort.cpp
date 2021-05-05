@@ -13,13 +13,13 @@ typedef struct {
 void fill_registration(record_type vector[]);
 void showArray(record_type vector[]);
 void print(record_type vector, int i);
-void heapsort(record_type v[], int n);
-void build_max_heap(record_type v[], int n);
-void max_heapfy(record_type v[], int i, int n);
-void swap(record_type v[], int a, int b);
+void heapsort(record_type r[], int n);
+void build_max_heap(record_type r[], int n);
+void max_heapfy(record_type r[], int i, int n);
+void swap(record_type r[], int a, int b);
 
 // Main Program
-int main(int argc, char **argv) {
+auto main(int argc, char **argv) -> int {
   record_type *registry;
   registry = (record_type *)calloc(SIZE, sizeof(record_type));
 
@@ -43,8 +43,10 @@ void max_heapfy(record_type r[], int i, int n) {
   } else {
     larger = i;
   }
-  if (right <= n && r[right].num > r[larger].num)
+  if (right <= n && r[right].num > r[larger].num) { {
     larger = right;
+}
+}
   if (larger != i) {
     swap(r, i, larger);
     max_heapfy(r, larger, n);
@@ -55,8 +57,10 @@ void max_heapfy(record_type r[], int i, int n) {
 
 void build_max_heap(record_type r[], int n) {
   int i;
-  for (i = n / 2; i >= 0; i--)
+  for (i = n / 2; i >= 0; i--) { {
     max_heapfy(r, i, n);
+}
+}
 }
 
 //-------------------------------------------------------------------------------
