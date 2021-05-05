@@ -18,12 +18,10 @@ jobs:
     - name: running clang tidy # with checks readability, mordenize, hipperformace, performance
       run: |
         clang-tidy --fix --warnings-as-errors="*" --checks="read*,modern*,hicpp*,performance*" *.cpp > report_code_quality.txt
-        echo $? > clang-tidy.txt
-      env:
-        CLANG_TIDY: ${{ cat clang-tidy.txt }}
+        echo $? > "$GITHUB_ENV"
         
     - name: TESTANDO IF E VARIAVEL DE AMBIENTE
-      if: $CLANG_TIDY != 0 
+      if: $GITHUB_ENV != 0 
       run: echo "O IF FUNCIOU AEEEOOWW"
 
     # Melhor action de commit    
