@@ -4,7 +4,7 @@ on: [push]
 
 jobs:
 
-  TESTANDO O CODIGO: 
+  TESTANDO_O_CODIGO: 
     runs-on: ubuntu-latest
     steps:
     
