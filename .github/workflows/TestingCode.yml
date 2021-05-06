@@ -1,57 +1,47 @@
-#from: https://github.com/satu0king/Github-Documentation-With-Doxygen
+name: Testing Code
 
-name: Generate documentation with Doxygen
+on: [push]
 
-# Controls when the action will run. Triggers the workflow on push or pull request
-# events but only for the master branch
-on: [push] 
-  
-  
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # This workflow contains a single job called "build"
-  build:
-    # The type of runner that the job will run on
+
+  TESTANDO_O_CODIGO: 
     runs-on: ubuntu-latest
-
-    # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-    # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-    - uses: actions/checkout@v2
-      with:
-        env: ${GITHUB_REF##*/}
-
-    - name: Create Doxygen file 
-      run: |
-        mkdir docs
-        cd docs
-        mkdir Doxygen
-        cd Doxygen
-        sudo apt install doxygen
-        doxygen -g Doxyfile
-          
-    - name: Doxygen Action # https://github.com/mattnotmitt/doxygen-action
-      uses: mattnotmitt/doxygen-action@v1
-      with:
-        # Path to Doxyfile
-        doxyfile-path: "docs/Doxygen/Doxyfile" # default is ./Doxyfile
-        # Working directory
-        working-directory: "." # default is .
-        
-    - name: Copying files to docs
-      run: |
-        sudo mv html docs/Doxygen
-        sudo mv latex docs/Doxygen
-        
+    
+    # TESTING ADDRESS SANITIZER
+      - uses: actions/checkout@v2
+      #- name: Compiling with Address Sanitizer
+        #run: |
+          #clang -fsanitize=address -g teste.c -o teste
+          #./teste
+    
    
-    - name: Get the current branch name
-      run: echo "::set-output name=branch::${GITHUB_REF#refs/heads/}"
-      id: myref
-  
-    # Publish updates   
-    - name: publish updates   
-      uses: mikeal/publish-to-github-action@master
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        BRANCH_NAME: ${{ steps.myref.outputs.branch }} # your branch name goes here  
+
+    # TESTING CODE QUALITY
+      - name: Install clang tidy
+        run: | 
+          sudo apt-get update -y
+          sudo apt-get install -y clang-tidy
+        
+      - name: running clang tidy # with checks readability, mordenize, hipperformace, performance
+        run: |
+          clang-tidy --fix --warnings-as-errors="*" --checks="read*,modern*,hicpp*,performance*" *.c
+
+
+
+         # CREATING REPORT CODE QUALITY
+      - name: Install clang tidy
+        if: ${{ failure() }}
+        run: | 
+          sudo apt-get update -y
+          sudo apt-get install -y clang-tidy
+        
+      - name: running clang tidy # with checks readability, mordenize, hipperformace, performance
+        run: |
+          clang-tidy --fix  --checks="read*,modern*,hicpp*,performance*" *.c > report_code_quality.txt
+
+      - uses: actions/upload-artifact@v2
+        with:
+          name: report_code_quality
+          path: ./report_code_quality.txt
         
