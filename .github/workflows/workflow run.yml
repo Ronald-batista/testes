@@ -5,7 +5,7 @@ name: CI
 # Controls when the action will run. 
 on:
   workflow_run:
-    workflows: ["Testing Code"]
+    workflows: ["TestingCode"]
     branches: [develop]
     types: [completed]
 
@@ -23,6 +23,10 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
+        with:
+          ref: ${{ github.event.workflow_run.head_branch }}
+      - run: git branch
+      - run: env
 
       # Runs a single command using the runners shell
       - name: Run a one-line script
