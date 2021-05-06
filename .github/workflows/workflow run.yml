@@ -5,8 +5,8 @@ name: CI
 # Controls when the action will run. 
 on:
   workflow_run:
-    workflows: ["Testing-Code"]
-    types: [unfinished]
+    workflows: ["TestingCode"]
+    types: [completed]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
