@@ -17,4 +17,11 @@ jobs:
       - name: running clang tidy # with checks readability, mordenize, hipperformace, performance
         if: ${{ failure() }}
         run: echo "Ronald"
+        
+      - name: running clang tidy # with checks readability, mordenize, hipperformace, performance
+        if: ${{ failure() }}
+        run: echo "COM FAILURE"
+        
+      - name: running clang tidy # with checks readability, mordenize, hipperformace, performance
+        run: echo SEM FAILURE"
     
