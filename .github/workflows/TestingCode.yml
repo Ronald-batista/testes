@@ -7,14 +7,8 @@ jobs:
   TESTANDO_O_CODIGO: 
     runs-on: ubuntu-latest
     steps:
-    
-    # TESTING ADDRESS SANITIZER
       - uses: actions/checkout@v2
-      #- name: Compiling with Address Sanitizer
-        #run: |
-          #clang -fsanitize=address -g teste.c -o teste
-          #./teste
-    
+
     # TESTING CODE QUALITY
       - name: Install clang tidy
         run: | 
@@ -29,8 +23,8 @@ jobs:
    # CREATE REPORT CODE QUALITY
       - name: running clang tidy # with checks readability, mordenize, hipperformace, performance
         if: ${{ failure() }}
-        run: |
-          clang-tidy --fix  --checks="read*,modern*,hicpp*,performance*" *.c > report_code_quality.txt
+        run: clang-tidy --fix  --checks="read*,modern*,hicpp*,performance*" *.c > report_code_quality.txt
+          
           
       - name: Upload artifact     
       - uses: actions/upload-artifact@v2
