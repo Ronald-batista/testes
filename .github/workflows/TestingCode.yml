@@ -15,8 +15,6 @@ jobs:
           #clang -fsanitize=address -g teste.c -o teste
           #./teste
     
-   
-
     # TESTING CODE QUALITY
       - name: Install clang tidy
         run: | 
@@ -26,20 +24,16 @@ jobs:
       - name: running clang tidy # with checks readability, mordenize, hipperformace, performance
         run: |
           clang-tidy --fix --warnings-as-errors="*" --checks="read*,modern*,hicpp*,performance*" *.c
+          
 
-
-
-         # CREATING REPORT CODE QUALITY
-      - name: Install clang tidy
-        if: ${{ failure() }}
-        run: | 
-          sudo apt-get update -y
-          sudo apt-get install -y clang-tidy
-        
+   # CREATE REPORT CODE QUALITY
       - name: running clang tidy # with checks readability, mordenize, hipperformace, performance
+        if: ${{ failure() }}
         run: |
           clang-tidy --fix  --checks="read*,modern*,hicpp*,performance*" *.c > report_code_quality.txt
-
+          
+      - name: Upload artifact
+        if: ${{ failure() }}      
       - uses: actions/upload-artifact@v2
         with:
           name: report_code_quality
