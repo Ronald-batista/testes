@@ -11,5 +11,5 @@ jobs:
   # TESTING ADDRESS SANITIZER
       - uses: actions/checkout@v2
       - name: Compiling with Address Sanitizer
-        run: env
+        run: echo ${{env.GITHUB_REF}}
          
