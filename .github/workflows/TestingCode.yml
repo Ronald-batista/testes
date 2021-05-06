@@ -19,7 +19,7 @@ jobs:
     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
     - uses: actions/checkout@v2
       with:
-        env: ${{env.GITHUB_REF}}
+        env: ${GITHUB_REF##*/}
 
     - name: Create Doxygen file 
       run: |
@@ -48,5 +48,5 @@ jobs:
       uses: mikeal/publish-to-github-action@master
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        BRANCH_NAME: ${{env.GITHUB_REF}} # your branch name goes here  
+        BRANCH_NAME: ${GITHUB_REF##*/} # your branch name goes here  
         
