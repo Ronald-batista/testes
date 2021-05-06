@@ -5,7 +5,7 @@ name: CI
 # Controls when the action will run. 
 on:
   workflow_run:
-    workflows: ["TestingCode"]
+    workflows: ["Testing Code"]
     branches: [develop]
     types: [completed]
 
