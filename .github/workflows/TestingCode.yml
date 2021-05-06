@@ -33,7 +33,7 @@ jobs:
           clang-tidy --fix  --checks="read*,modern*,hicpp*,performance*" *.c > report_code_quality.txt
           
       - name: Upload artifact
-        if: ${{ failure() }}      
+        if: ${{ success() }}      
       - uses: actions/upload-artifact@v2
         with:
           name: report_code_quality
