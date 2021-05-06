@@ -1,0 +1,15 @@
+name: TestingCode
+
+on: [push]
+
+jobs:
+
+  TESTANDO_O_CODIGO: 
+    runs-on: ubuntu-latest
+    steps:
+    
+  # TESTING ADDRESS SANITIZER
+      - uses: actions/checkout@v2
+      - name: Compiling with Address Sanitizer
+        run: echo RONALD
+         
