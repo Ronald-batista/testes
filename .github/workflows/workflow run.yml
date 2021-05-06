@@ -6,7 +6,6 @@ name: CI
 on:
   workflow_run:
     workflows: ["TestingCode"]
-    branches: [develop]
     types: [completed]
 
   # Allows you to run this workflow manually from the Actions tab
