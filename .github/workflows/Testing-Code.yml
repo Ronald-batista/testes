@@ -19,6 +19,7 @@ jobs:
         run: |
           git config --global user.email "ronald_hobo@outlook.com.br"
           git config --global user.name "Ronald-batista"
+          git pull --tags
           git tag
           git add .
           git commit -m "testing tags"
