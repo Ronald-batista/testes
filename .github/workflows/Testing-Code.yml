@@ -22,5 +22,5 @@ jobs:
             git config --global user.name "Ronald-batista"
             git add .
             git commit -m "criado no CI"
-            git push origin build-deploy
+            git push origin main build-deploy
 
