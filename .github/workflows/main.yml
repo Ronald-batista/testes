@@ -4,7 +4,7 @@ name: trigger from tag
 
 # Controls when the action will run. 
 on:
-  push:
+  create:
     tags:
       - 'b*'
 jobs:
