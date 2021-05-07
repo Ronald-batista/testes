@@ -22,7 +22,7 @@ jobs:
           git pull origin --tags
           git tag
           git tag -d build-deploy2
-          git push origin --tags
+          git push origin main
           git tag build-deploy2
           git add .
           git commit -m "testing tags"
