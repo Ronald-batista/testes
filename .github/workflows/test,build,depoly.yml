@@ -14,11 +14,11 @@ jobs:
           submodules: true
 
       # BUILDING WITH ADDRESS SANITIZER
-      - name: Installing Dependencies
-        run: |
-          sudo apt-get update && sudo apt-get install build-essential
-          sudo add-apt-repository ppa:pistache+team/unstable && sudo apt update && sudo apt install libpistache-dev
-          sudo apt-get update && sudo apt-get install libcurl4 libcurl4-openssl-dev -y
+      #- name: Installing Dependencies
+       # run: |
+         # sudo apt-get update && sudo apt-get install build-essential
+         # sudo add-apt-repository ppa:pistache+team/unstable && sudo apt update && sudo apt install libpistache-dev
+         # sudo apt-get update && sudo apt-get install libcurl4 libcurl4-openssl-dev -y
 
       - name: Setup cmake
         uses: jwlawson/actions-setup-cmake@v1.8
