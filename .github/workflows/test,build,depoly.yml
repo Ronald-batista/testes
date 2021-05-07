@@ -43,35 +43,35 @@ jobs:
        #Checkout
       - name: Checkout
         uses: actions/checkout@v2
-        with:
-          submodules: true
+       # with:
+        #  submodules: true
 
        #TESTING CODE QUALITY        
-      - name: Install clang tidy
-        run: | 
-          sudo apt-get update -y
-          sudo apt-get install -y clang-tidy
+      #- name: Install clang tidy
+      #  run: | 
+       #   sudo apt-get update -y
+       #   sudo apt-get install -y clang-tidy
 
-      - name: running clang tidy # with checks readability, mordenize, hipperformace, performance
-        run: |
-          clang-tidy --fix --warnings-as-errors="*" --checks="read*,modern*,hicpp*,performance*" **/*.cpp
-          clang-tidy --fix --warnings-as-errors="*" --checks="read*,modern*,hicpp*,performance*" **/**/*.cpp
-          clang-tidy --fix --warnings-as-errors="*" --checks="read*,modern*,hicpp*,performance*" **/**/*.hpp
+      #- name: running clang tidy # with checks readability, mordenize, hipperformace, performance
+       # run: |
+       #   clang-tidy --fix --warnings-as-errors="*" --checks="read*,modern*,hicpp*,performance*" **/*.cpp
+        #  clang-tidy --fix --warnings-as-errors="*" --checks="read*,modern*,hicpp*,performance*" **/**/*.cpp
+        #  clang-tidy --fix --warnings-as-errors="*" --checks="read*,modern*,hicpp*,performance*" **/**/*.hpp
 
        #CREATING REPORT CODE QUALITY - IF TESTING CODE QUALITY FAIL
-      - name: running clang tidy # with checks readability, mordenize, hipperformace, performance
-        if: ${{ failure() }}
-        run: |
-          clang-tidy --fix  --checks="read*,modern*,hicpp*,performance*" **/*.cpp > report_code_quality.txt
-          clang-tidy --fix  --checks="read*,modern*,hicpp*,performance*" **/**/*.cpp >> report_code_quality.txt
-          clang-tidy --fix  --checks="read*,modern*,hicpp*,performance*" **/**/*.hpp >> report_code_quality.txt
+      #- name: running clang tidy # with checks readability, mordenize, hipperformace, performance
+       # if: ${{ failure() }}
+      #  run: |
+        #  clang-tidy --fix  --checks="read*,modern*,hicpp*,performance*" **/*.cpp > report_code_quality.txt
+        #  clang-tidy --fix  --checks="read*,modern*,hicpp*,performance*" **/**/*.cpp >> report_code_quality.txt
+        #  clang-tidy --fix  --checks="read*,modern*,hicpp*,performance*" **/**/*.hpp >> report_code_quality.txt
           
-      - name: Upload Artifacts    
-        if: ${{ failure() }}
-      - uses: actions/upload-artifact@v2
-        with:
-          name: report_code_quality
-          path: ./report_code_quality.txt
+     # - name: Upload Artifacts    
+        #if: ${{ failure() }}
+      #- uses: actions/upload-artifact@v2
+       # with:
+        #  name: report_code_quality
+        #  path: ./report_code_quality.txt
       
  #Build_and_Deploy: 
   #  needs: Testing_Code_Quality
