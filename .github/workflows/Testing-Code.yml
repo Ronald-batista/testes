@@ -10,37 +10,17 @@ jobs:
     
     # TESTING ADDRESS SANITIZER
       - uses: actions/checkout@v2
-      - name: Compiling with Address Sanitizer
-        run: |
-          clang -fsanitize=address -g teste.c -o teste
-          ./teste
-    
-    # CREATING REPORT CODE QUALITY
-      - name: Install clang tidy
-        if: ${{ success() }}
-        run: | 
-          sudo apt-get update -y
-          sudo apt-get install -y clang-tidy
+      - name: create file
+        run: echo ronald >> testee.txt
         
-      - name: running clang tidy # with checks readability, mordenize, hipperformace, performance
-        run: |
-          clang-tidy --fix  --checks="read*,modern*,hicpp*,performance*" *.c > report_code_quality.txt
-
-      - uses: actions/upload-artifact@v2
+   # Sending push to build and deploy
+      - name: Sending push to build and deploy  # https://github.com/EndBug/add-and-commit
+        uses: EndBug/add-and-commit@v7
         with:
-          name: report_code_quality
-          path: ./report_code_quality.txt
-
-    # TESTING CODE QUALITY
-      - name: Install clang tidy
-        if: ${{ success() }}
-        run: | 
-          sudo apt-get update -y
-          sudo apt-get install -y clang-tidy
-        
-      - name: running clang tidy # with checks readability, mordenize, hipperformace, performance
-        run: |
-          clang-tidy --fix --warnings-as-errors="*" --checks="read*,modern*,hicpp*,performance*" *.c
-
-        
-        
+          author_name: Ronald-batista
+          author_email: ronald_hobo@outlook.com.br
+          message: 'Sending push to build and deploy - Success code test'
+          tag: 'build-deploy'
+          branch: main
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
