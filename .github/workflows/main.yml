@@ -3,10 +3,8 @@
 name: trigger from tag
 
 # Controls when the action will run. 
-on:
-  create:
-    tags:
-      - 'b*'
+on:[push]
+
 jobs:
   # This workflow contains a single job called "build"
   jobs1:
