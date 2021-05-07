@@ -112,28 +112,3 @@ jobs:
         run: |
           #ls -all
           rsync -avz build/bin/apipix ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:~/apipix/
-
-
-
-
-
-
-
-
-
-
-
-
-    # Sending push to build and deploy
-      #- name: Sending push to build and deploy  # https://github.com/EndBug/add-and-commit
-       # uses: EndBug/add-and-commit@v7
-        #with:
-         # author_name: Ronald-batista
-         # author_email: ronald_hobo@outlook.com.br
-         # message: 'Sending push to build and deploy - Success code test'
-         # tag: 'build-deploy'
-         # branch: desenv
-        #env:
-         # GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-    
-        
