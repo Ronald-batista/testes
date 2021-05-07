@@ -18,7 +18,7 @@ jobs:
       - name: Run a multi-line script
         run: |
           git pull --tags
-          git tag -d test
+          git tag -d testando
 
             
       # Sending push to build and deploy
@@ -28,7 +28,7 @@ jobs:
           author_name: Ronald-batista
           author_email: ronald_hobo@outlook.com.br
           message: 'Sending push to build and deploy - Success code test'
-          tag: 'test'
+          tag: 'testando'
           branch: desenv
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}      
