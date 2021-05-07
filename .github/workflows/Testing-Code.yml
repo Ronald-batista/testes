@@ -11,7 +11,7 @@ jobs:
     # TESTING ADDRESS SANITIZER
       - uses: actions/checkout@v2
       - name: create file
-        run: echo ronald > testee.txt
+        run: echo ronald >> testee.txt
         
         
         
