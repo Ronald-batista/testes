@@ -41,10 +41,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       # Checkout
-      - name: Checkout
-      - uses: actions/checkout@v2
-        with:
-          submodules: true
+      #- name: Checkout
+       # uses: actions/checkout@v2
+       # with:
+        #  submodules: true
 
       # TESTING CODE QUALITY        
       - name: Install clang tidy
@@ -78,10 +78,10 @@ jobs:
     runs-on: ubuntu-latest 
     steps:
       # Checkout
-      - name: Checkout
-      - uses: actions/checkout@v2
-        with:
-          submodules: true
+      #- name: Checkout
+     # - uses: actions/checkout@v2
+      #  with:
+        #  submodules: true
 
       - name: Installing Dependencies
         run: |
