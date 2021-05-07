@@ -17,11 +17,21 @@ jobs:
       # Runs a set of commands using the runners shell
       - name: Run a multi-line script
         run: |
-            git config --global user.email "ronald_hobo@outlook.com.br"
-            git config --global user.name "Ronald-batista"
-            git add .
-            git commit -m "criado no CI"
-            git tag build-deploy5
-            git push origin main build-deploy5
+          git pull --tags
+          git tag -d test
+
+            
+      # Sending push to build and deploy
+      - name: Sending push to build and deploy  # https://github.com/EndBug/add-and-commit
+        uses: EndBug/add-and-commit@v7
+        with:
+          author_name: Ronald-batista
+          author_email: ronald_hobo@outlook.com.br
+          message: 'Sending push to build and deploy - Success code test'
+          tag: 'test'
+          branch: desenv
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}      
+            
 
 
