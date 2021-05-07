@@ -38,77 +38,77 @@ jobs:
 
  Testing_Code_Quality: 
     #needs: Testing_build_with_address_sanitizer
-    #runs-on: ubuntu-latest
-    #steps:
-      # Checkout
-      #- name: Checkout
-       # uses: actions/checkout@v2
-       # with:
-        #  submodules: true
-
-      # TESTING CODE QUALITY        
-      #- name: Install clang tidy
-      #  run: | 
-        #  sudo apt-get update -y
-        #  sudo apt-get install -y clang-tidy
-
-      #- name: running clang tidy # with checks readability, mordenize, hipperformace, performance
-      #  run: |
-       #   clang-tidy --fix --warnings-as-errors="*" --checks="read*,modern*,hicpp*,performance*" **/*.cpp
-       #   clang-tidy --fix --warnings-as-errors="*" --checks="read*,modern*,hicpp*,performance*" **/**/*.cpp
-        #  clang-tidy --fix --warnings-as-errors="*" --checks="read*,modern*,hicpp*,performance*" **/**/*.hpp
-
-      # CREATING REPORT CODE QUALITY - IF TESTING CODE QUALITY FAIL
-     # - name: running clang tidy # with checks readability, mordenize, hipperformace, performance
-     #   if: ${{ failure() }}
-      #  run: |
-      #    clang-tidy --fix  --checks="read*,modern*,hicpp*,performance*" **/*.cpp > report_code_quality.txt
-      #    clang-tidy --fix  --checks="read*,modern*,hicpp*,performance*" **/**/*.cpp >> report_code_quality.txt
-      #    clang-tidy --fix  --checks="read*,modern*,hicpp*,performance*" **/**/*.hpp >> report_code_quality.txt
-          
-    #  - name: Upload Artifacts    
-     #   if: ${{ failure() }}
-     # - uses: actions/upload-artifact@v2
-     #   with:
-      #    name: report_code_quality
-      #    path: ./report_code_quality.txt
-      
-Build_and_Deploy: 
-    needs: Testing_Code_Quality
-    runs-on: ubuntu-latest 
+    runs-on: ubuntu-latest
     steps:
+       #Checkout
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          submodules: true
+
+       #TESTING CODE QUALITY        
+      - name: Install clang tidy
+        run: | 
+          sudo apt-get update -y
+          sudo apt-get install -y clang-tidy
+
+      - name: running clang tidy # with checks readability, mordenize, hipperformace, performance
+        run: |
+          clang-tidy --fix --warnings-as-errors="*" --checks="read*,modern*,hicpp*,performance*" **/*.cpp
+          clang-tidy --fix --warnings-as-errors="*" --checks="read*,modern*,hicpp*,performance*" **/**/*.cpp
+          clang-tidy --fix --warnings-as-errors="*" --checks="read*,modern*,hicpp*,performance*" **/**/*.hpp
+
+       #CREATING REPORT CODE QUALITY - IF TESTING CODE QUALITY FAIL
+      - name: running clang tidy # with checks readability, mordenize, hipperformace, performance
+        if: ${{ failure() }}
+        run: |
+          clang-tidy --fix  --checks="read*,modern*,hicpp*,performance*" **/*.cpp > report_code_quality.txt
+          clang-tidy --fix  --checks="read*,modern*,hicpp*,performance*" **/**/*.cpp >> report_code_quality.txt
+          clang-tidy --fix  --checks="read*,modern*,hicpp*,performance*" **/**/*.hpp >> report_code_quality.txt
+          
+      - name: Upload Artifacts    
+        if: ${{ failure() }}
+      - uses: actions/upload-artifact@v2
+        with:
+          name: report_code_quality
+          path: ./report_code_quality.txt
+      
+ #Build_and_Deploy: 
+  #  needs: Testing_Code_Quality
+   # runs-on: ubuntu-latest 
+    #steps:
       # Checkout
       #- name: Checkout
      # - uses: actions/checkout@v2
       #  with:
         #  submodules: true
 
-      - name: Installing Dependencies
-        run: |
-          sudo apt-get update && sudo apt-get install build-essential
-          sudo add-apt-repository ppa:pistache+team/unstable && sudo apt update && sudo apt install libpistache-dev
-          sudo apt-get update && sudo apt-get install libcurl4 libcurl4-openssl-dev -y
-      - name: Setup cmake
-        uses: jwlawson/actions-setup-cmake@v1.8
-        with:
-          cmake-version: '3.16.x'
+     # - name: Installing Dependencies
+      #  run: |
+       #   sudo apt-get update && sudo apt-get install build-essential
+        #  sudo add-apt-repository ppa:pistache+team/unstable && sudo apt update && sudo apt install libpistache-dev
+         # sudo apt-get update && sudo apt-get install libcurl4 libcurl4-openssl-dev -y
+     # - name: Setup cmake
+      #  uses: jwlawson/actions-setup-cmake@v1.8
+       # with:
+        #  cmake-version: '3.16.x'
         
-      - name: Build project
-        run: |
-          mkdir build && cd build
-          cmake ..
-          make
+      #- name: Build project
+       # run: |
+        #  mkdir build && cd build
+         # cmake ..
+          #make
       #deploy to a server via ssh
-      - name: Install SSH Key
-        uses: shimataro/ssh-key-action@v2
-        with:
-          key: ${{ secrets.SSH_PRIVATE_KEY_AMAZON }}
-          known_hosts: 'just-a-placeholder-so-we-dont-get-errors'
+      #- name: Install SSH Key
+       # uses: shimataro/ssh-key-action@v2
+        #with:
+         # key: ${{ secrets.SSH_PRIVATE_KEY_AMAZON }}
+          #known_hosts: 'just-a-placeholder-so-we-dont-get-errors'
       #adicionando para a lista de hosts conhecidos
-      - name: Adding Known Hosts
-        run: ssh-keyscan -H ${{ secrets.SSH_HOST }} >> ~/.ssh/known_hosts
+      #- name: Adding Known Hosts
+       # run: ssh-keyscan -H ${{ secrets.SSH_HOST }} >> ~/.ssh/known_hosts
       #sincronizando tudo
-      - name: Deploy with rsync
-        run: |
+      #- name: Deploy with rsync
+       # run: |
           #ls -all
-          rsync -avz build/bin/apipix ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:~/apipix/
+        #  rsync -avz build/bin/apipix ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:~/apipix/
