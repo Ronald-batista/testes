@@ -25,13 +25,13 @@ jobs:
         with:
           cmake-version: '3.16.x'
 
-     - name: Build project
-          run: |
-            mkdir build && cd build
-            cmake .. -DCMAKE_CXX_FLAGS="-fsanitize=address  -fsanitize=leak -g" -DCMAKE_C_FLAGS="-fsanitize=address  -fsanitize=leak -g" -DCMAKE_EXE_LINKER_FLAGS="-fsanitize=address  -fsanitize=leak" -DCMAKE_MODULE_LINKER_FLAGS="-fsanitize=address  -fsanitize=leak"
-            make
-            cd bin
-            sudo ./apipix     
+      - name: Build project
+        run: |
+          mkdir build && cd build
+          cmake .. -DCMAKE_CXX_FLAGS="-fsanitize=address  -fsanitize=leak -g" -DCMAKE_C_FLAGS="-fsanitize=address  -fsanitize=leak -g" -DCMAKE_EXE_LINKER_FLAGS="-fsanitize=address  -fsanitize=leak" -DCMAKE_MODULE_LINKER_FLAGS="-fsanitize=address  -fsanitize=leak"
+          make
+          cd bin
+          sudo ./apipix     
 
       - name: Exclude build folder
         run: sudo rm -r build       
