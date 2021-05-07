@@ -21,7 +21,6 @@ jobs:
             git config --global user.name "Ronald-batista"
             git add .
             git commit -m "criado no CI"
-            git tag -d build-deploy2
             git tag build-deploy2
             git push origin main build-deploy2
 
