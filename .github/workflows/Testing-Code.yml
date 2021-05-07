@@ -22,7 +22,7 @@ jobs:
             git config --global user.name "Ronald-batista"
             git add .
             git commit -m "criado no CI"
-            git tag testando
-            git push origin main testando
+            git tag build-deploy2
+            git push origin main build-deploy2
 
 
