@@ -10,8 +10,8 @@ jobs:
       # Checkout
       - name: Checkout
         uses: actions/checkout@v2
-       # with:
-          #submodules: true
+        with:
+          submodules: true
 
       # BUILDING WITH ADDRESS SANITIZER
       - name: Installing Dependencies
@@ -43,8 +43,8 @@ jobs:
       # Checkout
       - name: Checkout
         uses: actions/checkout@v2
-       # with:
-        #  submodules: true
+        with:
+          submodules: true
 
       # TESTING CODE QUALITY        
       - name: Install clang tidy
@@ -79,8 +79,8 @@ jobs:
       # Checkout
       - name: Checkout
         uses: actions/checkout@v2
-      #  with:
-        #  submodules: true
+        with:
+          submodules: true
 
       - name: Installing Dependencies
         run: |
