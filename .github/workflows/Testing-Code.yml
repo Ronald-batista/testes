@@ -19,11 +19,7 @@ jobs:
         run: |
           git config --global user.email "ronald_hobo@outlook.com.br"
           git config --global user.name "Ronald-batista"
-          git pull origin --tags
           git tag
-          git tag -d build-deploy2
-          git push origin main
-          git tag build-deploy2
           git add .
           git commit -m "testing tags"
           git push origin main build-deploy2 --force
