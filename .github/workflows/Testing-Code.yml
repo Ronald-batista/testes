@@ -19,12 +19,13 @@ jobs:
         run: |
           git config --global user.email "ronald_hobo@outlook.com.br"
           git config --global user.name "Ronald-batista"
-          git pull --tags
+          git pull origin --tags
           git tag
-          git tag -d build-deploy2
-          git push --tags --force
-          git tag build-deploy2
-          git push --tags --force
+          git tag -d origin build-deploy2
+          git push origin --tags --force
+          git tag origin build-deploy2
+          git tag
+          git push origin --tags --force
           
 
 
