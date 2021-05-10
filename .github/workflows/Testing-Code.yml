@@ -24,8 +24,7 @@ jobs:
           git tag -d build-deploy2
           git push --tags --force
           git tag build-deploy2
-          git add .
-          git commit -m "testing tags"
-          git push origin main build-deploy2 --force
+          git push --tags --force
+          
 
 
