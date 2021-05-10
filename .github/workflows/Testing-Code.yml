@@ -26,7 +26,7 @@ jobs:
           git tag
           git tag build-deploy2
           git tag
-          git push origin --tags --force
+          git push --tags --force
           
 
 
