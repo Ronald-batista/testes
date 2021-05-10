@@ -6,7 +6,7 @@ name: trigger from tag
 on:   
   push:
     tags:
-      - b*
+      - 'b*'
 
 jobs:
   # This workflow contains a single job called "build"
