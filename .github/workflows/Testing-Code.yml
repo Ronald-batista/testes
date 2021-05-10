@@ -22,8 +22,9 @@ jobs:
           git pull origin --tags
           git tag
           git tag -d origin build-deploy2
-          git push origin --tags --force
-          git tag origin build-deploy2
+          git push --tags --force
+          git tag
+          git tag build-deploy2
           git tag
           git push origin --tags --force
           
