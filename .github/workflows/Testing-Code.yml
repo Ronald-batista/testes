@@ -23,6 +23,7 @@ jobs:
           git tag
           git push --delete origin build-deploy2
           git tag
+          git pull origin --tags
           git tag build-deploy2
           git tag
           git push --tags --force
