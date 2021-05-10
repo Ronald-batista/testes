@@ -4,7 +4,7 @@ name: CI
 
 # Controls when the action will run. 
 on:
-  create:
+  push:
     tags:
       - build-deploy2
 
