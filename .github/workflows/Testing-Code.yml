@@ -21,9 +21,9 @@ jobs:
           git config --global user.name "Ronald-batista"
           git pull origin --tags
           git tag
-          git push --delete origin build-deploy2
-          git tag
-          git pull origin --tags
+          #git push --delete origin build-deploy2
+          #git tag
+          #git pull origin --tags
           git tag build-deploy2
           git tag
           git push --tags --force
